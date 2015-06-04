@@ -9,29 +9,65 @@
 
 % Don't admit you know where the macguffin is to anyone
 % but other illuminati members
-pretend_truth_value(Asker,
-		    location($macguffin, Loc),
-		    T) :-
-   \+ related(Asker, member_of, illuminati),
-   (var(Loc) -> T = unknown ; T = false).
-pretend_truth_value(Asker,
-		    contained_in($macguffin, Loc),
-		    T) :-
-   \+ related(Asker, member_of, illuminati),
-   (var(Loc) -> T = unknown ; T = false).
+%% pretend_truth_value(Asker,
+%% 		    location($macguffin, Loc),
+%% 		    T) :-
+%%    \+ related(Asker, member_of, illuminati),
+%%    (var(Loc) -> T = unknown ; T = false).
+%% pretend_truth_value(Asker,
+%% 		    contained_in($macguffin, Loc),
+%% 		    T) :-
+%%    \+ related(Asker, member_of, illuminati),
+%%    (var(Loc) -> T = unknown ; T = false).
 
-% Don't admit to being an illuminati member to non-members
-pretend_truth_value(Asker,
-		    related($me, member_of, illuminati),
-		    false) :-
-   \+ related(Asker, member_of, illuminati).
+%% % Don't admit to being an illuminati member to non-members
+%% pretend_truth_value(Asker,
+%% 		    related($me, member_of, illuminati),
+%% 		    false) :-
+%%    \+ related(Asker, member_of, illuminati).
    
-% Don't admit to knowing who's in the illuminati
+%% % Don't admit to knowing who's in the illuminati
+%% pretend_truth_value(Asker,
+%% 		    related(X, member_of, illuminati),
+%% 		    unknown) :-
+%%    var(X),
+%%    \+ related(Asker, member_of, illuminati).
+
+%% FINAL PROJECT CODE %%%
+
+% You know the locations of hidden objects
+location($body, $bed).
+location($murder_weapon, $toilet).
+kind($murder_weapon, whale_harpoon).
+
+% Pretend you don't know things (causes Kavi to tell a lie instead, see below)
 pretend_truth_value(Asker,
-		    related(X, member_of, illuminati),
-		    unknown) :-
-   var(X),
-   \+ related(Asker, member_of, illuminati).
+                  location($body, Loc),
+                  T) :-
+   can_lie(location($body, _),
+   (var(Loc) -> T = unknown; T = false).
+
+pretend_truth_value(Asker,
+                  location($murder_weapon, Loc),
+                  T) :-
+   can_lie(location($murder_weapon, _),
+   (var(Loc) -> T = unknown; T = false).
+
+pretend_truth_value(Asker,
+                  is_a($murder_weapon, X),
+                  T) :-
+   canlie(is_a($murder_weapon, X),
+   (var(Kind) -> T = unknown; T = false).
+
+% Lies I know how to tell:
+lie(location($body, _), location($body, $refrigerator)).
+lie(location($body, _), location($body, $plant)).
+lie(location($murder_weapon, _), location($murder_weapon, $desk)).
+lie(location($murder_weapon, _), location($murder_weapon, $bookshelf)).
+lie(is_a($murder_weapon, _), is_a($murder_weapon, 'feather duster')).
+lie(is_a($murder_weapon, _), is_a($murder_weapon, 'Rube-Goldeberg machine').
+
+%%%%%%%%%%%%%%%%%%%%%
    
 :- public bedroom_empty/0.
 bedroom_empty :-

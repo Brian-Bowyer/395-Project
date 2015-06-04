@@ -99,3 +99,7 @@ and_truth_values(false, _, false) :-
 and_truth_values(_, false, false) :-
    !.
 and_truth_values(_, _, unknown).
+
+%% FINAL PROJECT CODE %%
+can_lie(X) :-
+lie(X,_).
