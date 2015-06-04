@@ -3,7 +3,7 @@
 %%%%
 
 % Tell the system to automatically start this concern.
-% standard_concern(need_satisfaction, 1).
+standard_concern(need_satisfaction, 1).
 
 
 
@@ -26,7 +26,6 @@ need(social, 30).
 %% survival_need(?Need)
 %  True if Need is necessary to survival, i.e. the character would
 %  die if the satisfaction level went to 0.
-:- public survival_need/1.
 survival_need(hunger).
 survival_need(thirst).
 survival_need(sleep).
