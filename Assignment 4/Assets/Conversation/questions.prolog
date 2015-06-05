@@ -85,7 +85,7 @@ default_strategy(
 	 !, trace,
    nonvar(Constraint),
    $task/partner/Partner,
-   (can_lie(Core) -> lie(Core,Lie); Lie = Core),
+   ignore(lie(Core,Lie)),
    notrace.
 
 default_strategy(enumerate_answers(Asker, Answer, Core, Constraint),
