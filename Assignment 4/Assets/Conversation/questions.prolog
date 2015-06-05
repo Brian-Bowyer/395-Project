@@ -70,12 +70,23 @@ strategy(answer_wh(Asker, Explanation, explanation(P, Explanation), _),
 	       question_answer($me, Asker, E, present, simple),
 	        true:speech(["I couldn't speculate."])])).
 
-default_strategy(generate_unique_answer(Asker, _Answer, Core, Constraint),
-		 if(admitted_truth_value(Asker, Constraint, true),
+default_strategy(
+	generate_unique_answer(Asker, _Answer, Core, Constraint),
+		 if(
+		 	  admitted_truth_value(Asker, Constraint, true),
 		    question_answer($me, Partner, Core, present, simple),
-		    speech(["Don't know"]))) :-
+		    if(
+		    	can_lie(Core), 
+		    	question_answer($me, Partner, Lie, present, simple),
+		    	speech(["I don't know"]))
+		   	)
+		  
+	 ) :- %% This is the line we modify to make it lie %%
+	 !, trace,
    nonvar(Constraint),
-   $task/partner/Partner.
+   $task/partner/Partner,
+   (can_lie(Core) -> lie(Core,Lie); Lie = Core),
+   notrace.
 
 default_strategy(enumerate_answers(Asker, Answer, Core, Constraint),
 		 answer_with_list(List, Connective, Answer, Core)) :-

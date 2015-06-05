@@ -8,8 +8,8 @@
 %%% don't know it.
 %%%
 
-:- public truth_value/2, admitted_truth_value/3, know_that/1.
-:- external know_whether/1, pretend_truth_value/3.
+:- public truth_value/2, admitted_truth_value/3, know_that/1, can_lie/1.
+:- external know_whether/1, pretend_truth_value/3, lie/2.
 :- external know_property/3, know_relation/3,
             know_about_kind/1.
 
