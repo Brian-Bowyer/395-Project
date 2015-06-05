@@ -353,9 +353,12 @@ s(S:location(S, Character), interrogative, Polarity, Tense, simple) -->
 
 %But [sentence]
 
-s(S, indicative, Polarity, Tense, simple) -->
-   [but], 
-   sentence(S, indicative, Polarity, Tense, simple).
+s(LF, indicative, Polarity, Tense, conjunction) -->
+   cp(but, LF, Polarity, Tense).
+
+cp(Conjunction, LF, Polarity, Tense) -->
+   [Conjunction],
+   sentence(LF, indicative, Polarity, Tense, simple).
 
 %%%
 %%% Adjectival phrases
