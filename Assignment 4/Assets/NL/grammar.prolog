@@ -34,7 +34,9 @@ utterance(hypno_command(Speaker, Addressee, LF, T, A)) -->
    [ fnord ],
    s(LF, indicative, affirmative, T, A),
    { current_dialog_pair(Speaker, Addressee) }.
-
+utterance(contradiction(Speaker, Addressee, LF)) -->
+   s(LF, _, _, _, conjunction),
+   { current_dialog_pair(Speaker, Addressee) }.
 
 current_dialog_pair($speaker, $addressee).
 

@@ -32,5 +32,3 @@ be(Character, Name) :-
 
 strategy(respond_to_assertion(Speaker, okay(Speaker), _),
 	 null).
-
-

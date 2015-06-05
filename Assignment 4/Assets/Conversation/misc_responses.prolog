@@ -86,3 +86,9 @@ strategy(do_hypnotically_believe(LF),
 default_strategy(do_hypnotically_believe(_LF),
 		 % No effect
 		 null).
+
+%%
+%% Contradictions
+%%
+
+strategy(respond_to_dialog_act(contradiction(Speaker, _, LF)), speech(["No, really."])).
