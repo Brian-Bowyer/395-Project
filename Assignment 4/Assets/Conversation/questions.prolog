@@ -70,6 +70,7 @@ strategy(answer_wh(Asker, Explanation, explanation(P, Explanation), _),
 	       question_answer($me, Asker, E, present, simple),
 	        true:speech(["I couldn't speculate."])])).
 
+%% FINAL PROJECT CODE %%
 default_strategy(
 	generate_unique_answer(Asker, _Answer, Core, Constraint),
 		 if(
@@ -81,12 +82,14 @@ default_strategy(
 		    	speech(["I don't know"]))
 		   	)
 		  
-	 ) :- %% This is the line we modify to make it lie %%
+	 ) :-
 	 !, trace,
    nonvar(Constraint),
    $task/partner/Partner,
    ignore(lie(Core,Lie)),
    notrace.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 default_strategy(enumerate_answers(Asker, Answer, Core, Constraint),
 		 answer_with_list(List, Connective, Answer, Core)) :-

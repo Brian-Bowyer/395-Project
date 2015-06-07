@@ -21,6 +21,10 @@ heard_hearsay(ModalLF) :-
 strategy(respond_to_dialog_act(question_answer(Speaker,_, LF)),
 	 assert(/hearsay/Speaker/LF)).
 
+strategy(respond_to_dialog_act(question_answer(Speaker,_, LF, _, _)),
+	 assert(/hearsay/Speaker/LF)).
+
+
 
 %%
 %% Kluges to keep characters from inappropriately contradicting other characters answers
