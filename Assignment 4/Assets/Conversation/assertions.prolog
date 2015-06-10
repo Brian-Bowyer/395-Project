@@ -32,3 +32,20 @@ be(Character, Name) :-
 
 strategy(respond_to_assertion(Speaker, okay(Speaker), _),
 	 null).
+
+%%
+%% Contradictions
+%%
+
+strategy(respond_to_dialog_act(contradiction(Speaker, _, LF, Tense, Aspect)), 
+		respond_to_contradiction(Speaker, Modalized, Truth)) :-
+   modalized(LF, Tense, Aspect, Modalized),
+   admitted_truth_value(Speaker, Modalized, Truth).
+
+default_strategy(respond_to_contradiction(_Speaker, _ModalLF, true),
+	say_string("Yes, I know.")).
+default_strategy(respond_to_contradiction(_Speaker, _ModalLF, false),
+	 say_string("I don't think so.")).
+default_strategy(respond_to_contradiction(Speaker, ModalLF, unknown),
+	 (say_string(Response), assert(/hearsay/Speaker/ModalLF))) :-
+   heard_hearsay(ModalLF) -> Response="I've heard that." ; Response="Huh.".
