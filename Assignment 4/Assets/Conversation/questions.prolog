@@ -13,9 +13,7 @@ strategy(respond_to_dialog_act(question(Asker, $me, Question,
 %% Yes/no quetsions
 strategy(answer_yes_no(Asker, Q),
 	 generate_answer(Q, Answer)) :-	
-	 trace,
-   admitted_truth_value(Asker, Q, Answer),
-   notrace.
+   admitted_truth_value(Asker, Q, Answer).
 
 strategy(generate_answer(Q, true),
 	 agree($me, $addressee, Q)).
@@ -75,23 +73,14 @@ strategy(answer_wh(Asker, Explanation, explanation(P, Explanation), _),
 %% FINAL PROJECT CODE %%
 default_strategy(
 	generate_unique_answer(Asker, _Answer, Core, Constraint),
-		 if(
+		 begin(call(trace), if(
 		 	  admitted_truth_value(Asker, Constraint, true),
 		    question_answer($me, Partner, Core, present, simple),
-		    %% if(
-		    %% 	can_lie(Core), 
-		    %% 	question_answer($me, Partner, Lie, present, simple),
-		    %% 	speech(["I don't know"]))
-		   	%% )
-		 speech(["I don't know"]))
-		  
+		 		speech(["I don't know"])), call(notrace))  
 	 ) :-
-	 !, trace,
+	 !,
    nonvar(Constraint),
-   $task/partner/Partner,
-   ignore(lie(Core,Lie)),
-   notrace.
-
+   $task/partner/Partner.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 default_strategy(enumerate_answers(Asker, Answer, Core, Constraint),

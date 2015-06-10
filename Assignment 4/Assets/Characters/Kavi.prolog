@@ -16,12 +16,6 @@
 %   \+ related(Asker, member_of, illuminati),
 %   (var(Loc) -> T = unknown ; T = false).
 
-pretend_truth_value(_,
-          location($macguffin, Loc),
-          T) :-
-   can_lie(location($macguffin, _)),
-   (var(Loc) -> T = unknown ; T = false).
-
 lie(location($macguffin, _), location($macguffin, $refrigerator)).
 lie(contained_in($macguffin, _), contained_in($macguffin, $refrigerator)).
 lie(location($body, _), location($body, $refrigerator)).
@@ -46,11 +40,6 @@ pretend_truth_value(Asker,
    \+ related(Asker, member_of, illuminati).
 
 %% FINAL PROJECT CODE %%%
-
-% You know the locations of hidden objects
-%% location($body, $bed).
-%% location($murder_weapon, $toilet).
-%% kind($murder_weapon, whale_harpoon).
 
 % Pretend you don't know things (causes Kavi to tell a lie instead, see below)
 %% pretend_truth_value(Asker,
