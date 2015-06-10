@@ -3,6 +3,7 @@
 
 % I know the secret location of the macguffin
 /perception/location/ $macguffin : $bookshelf.
+/perception/location/ $body : $bed.
 
 % Monitor goals quickly
 /parameters/poll_time:3.
