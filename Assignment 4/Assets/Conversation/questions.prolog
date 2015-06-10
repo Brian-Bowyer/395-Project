@@ -12,8 +12,10 @@ strategy(respond_to_dialog_act(question(Asker, $me, Question,
 
 %% Yes/no quetsions
 strategy(answer_yes_no(Asker, Q),
-	 generate_answer(Q, Answer)) :-
-   admitted_truth_value(Asker, Q, Answer).
+	 generate_answer(Q, Answer)) :-	
+	 trace,
+   admitted_truth_value(Asker, Q, Answer),
+   notrace.
 
 strategy(generate_answer(Q, true),
 	 agree($me, $addressee, Q)).
@@ -76,11 +78,12 @@ default_strategy(
 		 if(
 		 	  admitted_truth_value(Asker, Constraint, true),
 		    question_answer($me, Partner, Core, present, simple),
-		    if(
-		    	can_lie(Core), 
-		    	question_answer($me, Partner, Lie, present, simple),
-		    	speech(["I don't know"]))
-		   	)
+		    %% if(
+		    %% 	can_lie(Core), 
+		    %% 	question_answer($me, Partner, Lie, present, simple),
+		    %% 	speech(["I don't know"]))
+		   	%% )
+		 speech(["I don't know"]))
 		  
 	 ) :-
 	 !, trace,

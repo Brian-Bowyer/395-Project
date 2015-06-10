@@ -171,7 +171,16 @@ admitted_truth_value($me, P, Value) :-
    truth_value(P, Value).
 admitted_truth_value(Listener, P, Value) :-
    pretend_truth_value(Listener, P , Value).
+
+   %% FINAL PROJECT CODE %%
+admitted_truth_value(Listener, P, true) :-
+   can_lie(P), lie(P, P).
+admitted_truth_value(Listener, P, false) :-
+   can_lie(P), !. %but you didn't find a lie that unified above
+   %% FINAL PROJECT CODE %%
+
 admitted_truth_value(Listener, P, Value) :-
+   !,
    truth_value(P, Value),
    consistent_with_pretend_truth_value(Listener, P, Value).
 
@@ -188,3 +197,5 @@ and_truth_values(false, _, false) :-
 and_truth_values(_, false, false) :-
    !.
 and_truth_values(_, _, unknown).
+
+lie(contained_in(X,_), contained_in(X,Container)) :- lie(location(X,_), location(X, Loc)), contained_in(Loc, Container). %% Why does this work here but not in "lies.prolog".

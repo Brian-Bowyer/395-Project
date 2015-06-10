@@ -23,6 +23,8 @@ pretend_truth_value(_,
    (var(Loc) -> T = unknown ; T = false).
 
 lie(location($macguffin, _), location($macguffin, $refrigerator)).
+lie(contained_in($macguffin, _), contained_in($macguffin, $refrigerator)).
+lie(location($body, _), location($body, $refrigerator)).
 
 %% pretend_truth_value(Asker,
 %% 		    contained_in($macguffin, Loc),
