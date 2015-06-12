@@ -170,9 +170,7 @@ admitted_truth_value($me, P, Value) :-
    !,
    truth_value(P, Value).
 admitted_truth_value(Listener, P, Value) :-
-   (trace, 
-   pretend_truth_value(Listener, P , Value), notrace );
-   (notrace, fail).
+   pretend_truth_value(Listener, P , Value).
    %% FINAL PROJECT CODE %%
 %% admitted_truth_value(Listener, P, true) :-
 %%    can_lie(P), lie(P, P).
