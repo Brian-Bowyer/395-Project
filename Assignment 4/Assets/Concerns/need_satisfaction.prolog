@@ -3,7 +3,7 @@
 %%%%
 
 % Tell the system to automatically start this concern.
-standard_concern(need_satisfaction, 1).
+%standard_concern(need_satisfaction, 1).
 
 
 
