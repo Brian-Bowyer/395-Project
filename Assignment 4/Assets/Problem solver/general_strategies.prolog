@@ -1,3 +1,5 @@
+:- external secret_item/1.
+
 %%%
 %%% STRATEGIES FOR STANDARD OPERATIONS
 %%%
@@ -7,6 +9,7 @@
 strategy(resolve_match_failure(X), S) :-
    default_strategy(X, S).
 
+normalize_task(trace(X), begin(call(trace), X, call(notrace))).
 %%%
 %%% Precondition and postcondition handling
 %%%
@@ -211,6 +214,7 @@ unsearched(Container, Contents) :-
 
 reveal_hidden_item(Container) :-
    hidden_contents(Container, Item),
+   \+ secret_item(Item),
    reveal(Item),
    assert($task/previously_hidden_items/Item),
    % Don't wait for update loop to update Item's position.
@@ -220,6 +224,8 @@ reveal_hidden_item(Container) :-
 :- public previously_hidden/1.
 previously_hidden(Item) :-
    $task/previously_hidden_items/Item.
+
+
 
 %%
 %% Ingestion (eating and drinking)

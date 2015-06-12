@@ -73,10 +73,10 @@ strategy(answer_wh(Asker, Explanation, explanation(P, Explanation), _),
 %% FINAL PROJECT CODE %%
 default_strategy(
 	generate_unique_answer(Asker, _Answer, Core, Constraint),
-		 begin(call(trace), if(
+		 if(
 		 	  admitted_truth_value(Asker, Constraint, true),
-		    question_answer($me, Partner, Core, present, simple),
-		 		speech(["I don't know"])), call(notrace))  
+		     question_answer($me, Partner, Core, present, simple),
+		 		speech(["I don't know"]))  
 	 ) :-
 	 !,
    nonvar(Constraint),

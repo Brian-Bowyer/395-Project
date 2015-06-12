@@ -22,4 +22,5 @@ $global::fkey_command(alt-p, "Display player character's status") :-
    generate_character_debug_overlay($pc).
 
 lie(location($desk, _), location($desk, $kitchen)).
-lie(contained_in(X,_), contained_in(X,Container)) :- lie(location(X,_), location(X, Loc)), (Loc = Container; contained_in(Loc, Container)). %% Why does this work here but not in "lies.prolog".
+lie(X,Y) :- $global::lie(X,Y).
+

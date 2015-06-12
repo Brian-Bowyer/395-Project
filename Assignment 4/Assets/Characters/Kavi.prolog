@@ -9,6 +9,8 @@
 % Monitor goals quickly
 /parameters/poll_time:3.
 
+% Import pretend_truth_value
+
 % Don't admit you know where the macguffin is to anyone
 % but other illuminati members
 %% pretend_truth_value(Asker,
@@ -21,12 +23,13 @@
 
 lie(location($macguffin, _), location($macguffin, $refrigerator)).
 lie(contained_in($macguffin, _), contained_in($macguffin, $refrigerator)).
+lie(location($body, _), location($body, $mainframe)).
 lie(location($body, _), location($body, $refrigerator)).
-lie(location($body, _), location($body, $plant)).
 lie(location($murder_weapon, _), location($murder_weapon, $desk)).
 lie(location($murder_weapon, _), location($murder_weapon, $bookshelf)).
 lie(is_a($murder_weapon, _), is_a($murder_weapon, 'feather duster')).
-lie(is_a($murder_weapon, _), is_a($murder_weapon, 'Rube-Goldeberg machine').
+lie(is_a($murder_weapon, _), is_a($murder_weapon, 'Rube-Goldeberg machine')).
+lie(X,Y) :- $global::lie(X,Y).
 
 
 %% pretend_truth_value(Asker,
@@ -36,17 +39,17 @@ lie(is_a($murder_weapon, _), is_a($murder_weapon, 'Rube-Goldeberg machine').
 %%    (var(Loc) -> T = unknown ; T = false).
 
 % Don't admit to being an illuminati member to non-members
-pretend_truth_value(Asker,
-		    related($me, member_of, illuminati),
-		    false) :-
-   \+ related(Asker, member_of, illuminati).
+%% pretend_truth_value(Asker,
+%% 		    related($me, member_of, illuminati),
+%% 		    false) :-
+%%    \+ related(Asker, member_of, illuminati).
    
-% Don't admit to knowing who's in the illuminati
-pretend_truth_value(Asker,
-		    related(X, member_of, illuminati),
-		    unknown) :-
-   var(X),
-   \+ related(Asker, member_of, illuminati).
+%% % Don't admit to knowing who's in the illuminati
+%% pretend_truth_value(Asker,
+%% 		    related(X, member_of, illuminati),
+%% 		    unknown) :-
+%%    var(X),
+%%    \+ related(Asker, member_of, illuminati).
 
 %%%%%%%%%%%%%%%%%%%%%
    

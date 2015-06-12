@@ -6,6 +6,12 @@
 :- randomizable utterance//1, stock_phrase//1.
 
 utterance(DialogAct) --> stock_phrase(DialogAct).
+utterance(contradiction(Speaker, Addressee, LF, _, _)) -->
+   sentence(LF, _, affirmative, _, conjunction),
+   { current_dialog_pair(Speaker, Addressee) }.
+utterance(contradiction(Speaker, Addressee, not(LF), _, _)) -->
+   sentence(LF, _, negative, _, conjunction),
+   { current_dialog_pair(Speaker, Addressee) }.
 utterance(question(Speaker, Addressee, LF, T, A)) -->
    sentence(LF, interrogative, affirmative, T, A),
    { current_dialog_pair(Speaker, Addressee) }.

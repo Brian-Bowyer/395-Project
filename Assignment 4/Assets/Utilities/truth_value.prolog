@@ -11,7 +11,8 @@
 :- public truth_value/2, admitted_truth_value/3,
    know_true/1, know_false/1,
    closed/1.
-:- external know_whether/1, pretend_truth_value/3.
+:- external know_whether/1.
+:- multifile pretend_truth_value/3.
 :- external know_property/3, know_relation/3,
             know_about_kind/1, closed/1.
 
@@ -25,6 +26,8 @@ informed_about($me, P) :- know_whether(P).
 %  The truth value (true, false, or unknown) of P is for this character
 %  is TruthValue.  Current version is very simplistic.
 
+truth_value(not(P), Value) :-
+   truth_value(~P, Value).
 truth_value(P, Value) :-
    var(Value), !,
    determine_truth_value(P, Value).
@@ -157,6 +160,9 @@ know_about_object(Object) :-
 %% pretend_truth_value(+Listener, :P, ?TValue)
 %  If Listener asks about P, pretend its truth value is TValue.
 :- external pretend_truth_value/3.
+
+admitted_truth_value(Listener, not(P), Value) :-
+   admitted_truth_value(Listener, ~P, Value).
 
 %% admitted_truth_value(+Listener, :P, ?TValue)
 %  The truth value for P that the character should admit to

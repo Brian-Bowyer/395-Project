@@ -25,7 +25,7 @@ $kavi::quip(mention_keepout,
 
 beat(pc_reacts).
 beat_sequel(pc_reacts, exposition).
-beat_start_task(pc_reacts, $kavi, goto($'kitchen sink')).
+beat_start_task(pc_reacts, $kavi, goto($'kitchen_sink')).
 beat_monolog(pc_reacts,
 	     $pc,
 	     [ sleep(3),

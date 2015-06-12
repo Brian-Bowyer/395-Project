@@ -83,6 +83,12 @@ strategy(do_hypnotically_believe(LF),
    Green is $'Color'.green,
    $task/partner/Partner.
 
+strategy(do_convince(LF),
+	assertion($me, Partner, LF, present, simple)) :-
+	hypnotically_believe(LF),
+	$task/partner/Partner.
+
 default_strategy(do_hypnotically_believe(_LF),
 		 % No effect
 		 null).
+

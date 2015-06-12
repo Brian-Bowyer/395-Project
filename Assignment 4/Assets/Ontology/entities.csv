@@ -15,4 +15,6 @@ the_game,enclosing_container,"""The game is everything.""",the game,,,
 $mainframe,mainframe,"[""It's an old mainframe computer"", ""inexplicably located in Kavi's house.""]",the mainframe,,,
 $macguffin,"macguffin, key_item",,the macguffin,,,
 $body,body,"""A dead body""",the body,,,"goal: ""being dead"""
-$murder_weapon,murder_weapon,The ,the murder weapon,,,
+$murder_weapon,murder_weapon,,the murder weapon,,,
+$kitchen_sink,sink,"""#include everything.h""",the kitchen sink,,,
+$bathroom_sink,sink,"""The other sink""",the bathroom sink,,,

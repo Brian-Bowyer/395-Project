@@ -347,7 +347,18 @@ s(S:location(S, Character), interrogative, Polarity, Tense, simple) -->
    { character(Character) },
    aux_have(Tense, Agreement).
 
+%
+% Conjunctions
+%
 
+%But [sentence]
+
+s(LF, indicative, Polarity, Tense, conjunction) -->
+   cp(but, LF, Polarity, Tense).
+
+cp(Conjunction, LF, Polarity, Tense) -->
+   [Conjunction],
+   sentence(LF, indicative, Polarity, Tense, simple).
 
 %%%
 %%% Adjectival phrases

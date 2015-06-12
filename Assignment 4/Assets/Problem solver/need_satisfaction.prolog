@@ -22,7 +22,7 @@ strategy(satisfy(Need, Amount, Object, String), begin(
 	)).
 
 strategy(satisfy_a_need, satisfy(hunger, 100, $refrigerator, "Nom nom nom")).
-strategy(satisfy_a_need, satisfy(thirst, 100, $'kitchen sink', "Glug glug glug")).
+strategy(satisfy_a_need, satisfy(thirst, 100, $kitchen_sink, "Glug glug glug")).
 strategy(satisfy_a_need, satisfy(sleep, 100, $bed, "Zzzzzzzzz")).
 strategy(satisfy_a_need, satisfy(bladder, 100, $toilet, "Ahhhhhh")).
 strategy(satisfy_a_need, satisfy(hygiene, 100, $'bathroom sink', "Brush brush brush")).

@@ -25,7 +25,7 @@ $kavi::quip(mention_keepout,
 %%%
 
 beat(bruce_reacts).
-beat_start_task(bruce_reacts, $kavi, goto($'kitchen sink')).
+beat_start_task(bruce_reacts, $kavi, goto($'kitchen_sink')).
 beat_monolog(bruce_reacts,
 	     $bruce,
 	     [ sleep(3),
