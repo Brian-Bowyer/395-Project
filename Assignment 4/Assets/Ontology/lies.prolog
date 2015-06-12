@@ -9,7 +9,7 @@ lie(X,_).
 retract_lie(X, Y) :- retract(lie(X,Y)).
 
 pretend_truth_value(Listener, P, Truth) :-
-	Listener \= $me,
+	Listener \== $me,
 	can_lie(P), !,
 	(lie(P,P) -> 
 		Truth = true;
