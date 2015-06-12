@@ -17,6 +17,8 @@
 %   \+ related(Asker, member_of, illuminati),
 %   (var(Loc) -> T = unknown ; T = false).
 
+%% FINAL PROJECT CODE %%%
+
 lie(location($macguffin, _), location($macguffin, $refrigerator)).
 lie(contained_in($macguffin, _), contained_in($macguffin, $refrigerator)).
 lie(location($body, _), location($body, $refrigerator)).
@@ -45,27 +47,6 @@ pretend_truth_value(Asker,
 		    unknown) :-
    var(X),
    \+ related(Asker, member_of, illuminati).
-
-%% FINAL PROJECT CODE %%%
-
-% Pretend you don't know things (causes Kavi to tell a lie instead, see below)
-%% pretend_truth_value(Asker,
-%%                   location($body, Loc),
-%%                   T) :-
-%%    can_lie(location($body, _),
-%%    (var(Loc) -> T = unknown; T = false).
-
-%% pretend_truth_value(Asker,
-%%                   location($murder_weapon, Loc),
-%%                   T) :-
-%%    can_lie(location($murder_weapon, _),
-%%    (var(Loc) -> T = unknown; T = false).
-
-%% pretend_truth_value(Asker,
-%%                   is_a($murder_weapon, X),
-%%                   T) :-
-%%    canlie(is_a($murder_weapon, X),
-%%    (var(Kind) -> T = unknown; T = false).
 
 %%%%%%%%%%%%%%%%%%%%%
    
