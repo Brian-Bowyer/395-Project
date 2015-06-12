@@ -14,4 +14,5 @@ the_word,enclosing_container,"""The word is everything""",the world,,,
 the_game,enclosing_container,"""The game is everything.""",the game,,,
 $mainframe,mainframe,"[""It's an old mainframe computer"", ""inexplicably located in Kavi's house.""]",the mainframe,,,
 $macguffin,"macguffin, key_item",,the macguffin,,,
-$body,prop,"""A dead body""",the body,,,"goal: ""being dead"""
+$body,body,"""A dead body""",the body,,,"goal: ""being dead"""
+$murder_weapon,murder_weapon,The ,the murder weapon,,,

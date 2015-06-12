@@ -1,9 +1,10 @@
 % Keep intruders out of bedroom
-/goals/maintain/bedroom_empty.
+%/goals/maintain/bedroom_empty.
 
 % I know the secret location of the macguffin
 /perception/location/ $macguffin : $bookshelf.
 /perception/location/ $body : $bed.
+/perception/location/ $murder_weapon : $kitchen_sink.
 
 % Monitor goals quickly
 /parameters/poll_time:3.
@@ -19,6 +20,12 @@
 lie(location($macguffin, _), location($macguffin, $refrigerator)).
 lie(contained_in($macguffin, _), contained_in($macguffin, $refrigerator)).
 lie(location($body, _), location($body, $refrigerator)).
+lie(location($body, _), location($body, $plant)).
+lie(location($murder_weapon, _), location($murder_weapon, $desk)).
+lie(location($murder_weapon, _), location($murder_weapon, $bookshelf)).
+lie(is_a($murder_weapon, _), is_a($murder_weapon, 'feather duster')).
+lie(is_a($murder_weapon, _), is_a($murder_weapon, 'Rube-Goldeberg machine').
+
 
 %% pretend_truth_value(Asker,
 %% 		    contained_in($macguffin, Loc),
@@ -59,14 +66,6 @@ pretend_truth_value(Asker,
 %%                   T) :-
 %%    canlie(is_a($murder_weapon, X),
 %%    (var(Kind) -> T = unknown; T = false).
-
-%% % Lies I know how to tell:
-%% lie(location($body, _), location($body, $refrigerator)).
-%% lie(location($body, _), location($body, $plant)).
-%% lie(location($murder_weapon, _), location($murder_weapon, $desk)).
-%% lie(location($murder_weapon, _), location($murder_weapon, $bookshelf)).
-%% lie(is_a($murder_weapon, _), is_a($murder_weapon, 'feather duster')).
-%% lie(is_a($murder_weapon, _), is_a($murder_weapon, 'Rube-Goldeberg machine').
 
 %%%%%%%%%%%%%%%%%%%%%
    
