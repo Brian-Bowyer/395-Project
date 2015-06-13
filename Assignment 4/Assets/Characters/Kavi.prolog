@@ -29,8 +29,9 @@ lie(location($murder_weapon, _), location($murder_weapon, $desk)).
 lie(location($murder_weapon, _), location($murder_weapon, $bookshelf)).
 lie(is_a($murder_weapon, _), is_a($murder_weapon, 'feather duster')).
 lie(is_a($murder_weapon, _), is_a($murder_weapon, 'Rube-Goldeberg machine')).
-lie(X,Y) :- $global::lie(X,Y).
+lie(Item,Loc) :- $global::lie(Item,Loc).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% pretend_truth_value(Asker,
 %% 		    contained_in($macguffin, Loc),

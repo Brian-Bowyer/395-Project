@@ -102,6 +102,10 @@ normalize_task(begin(A, B, C, D, E),
 normalize_task(begin(A, B, C, D, E, F),
 	       (A, B, C, D, E, F)).
 
+%%%%% Final Project Code %%%%%%%
+normalize_task(ignore(X), call(ignore(X))).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Translate wait_event_with_timeout into wait_event/2,
 % which has a deadline rather than a timeout period.
 normalize_task(wait_event_with_timeout(E, TimeoutPeriod),

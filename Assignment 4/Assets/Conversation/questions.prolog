@@ -71,16 +71,19 @@ strategy(answer_wh(Asker, Explanation, explanation(P, Explanation), _),
 	        true:speech(["I couldn't speculate."])])).
 
 %% FINAL PROJECT CODE %%
+
 default_strategy(
 	generate_unique_answer(Asker, _Answer, Core, Constraint),
 		 if(
 		 	  admitted_truth_value(Asker, Constraint, true),
-		     question_answer($me, Partner, Core, present, simple),
+		     (question_answer($me, Partner, Core, present, simple), retract_secret_item_on_truth(Core)),
 		 		speech(["I don't know"]))  
 	 ) :-
 	 !,
    nonvar(Constraint),
    $task/partner/Partner.
+   % tracereturn(ignore((Core = location(Item,_Loc), \+ (can_lie(Core)), retract( $global_root/secret_item/Item )))).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 default_strategy(enumerate_answers(Asker, Answer, Core, Constraint),

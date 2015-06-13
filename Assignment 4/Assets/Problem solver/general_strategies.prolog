@@ -214,7 +214,7 @@ unsearched(Container, Contents) :-
 
 reveal_hidden_item(Container) :-
    hidden_contents(Container, Item),
-   \+ secret_item(Item),
+   \+ $global_root/secret_item/Item,
    reveal(Item),
    assert($task/previously_hidden_items/Item),
    % Don't wait for update loop to update Item's position.

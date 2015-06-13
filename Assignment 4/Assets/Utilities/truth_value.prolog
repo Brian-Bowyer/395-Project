@@ -177,13 +177,6 @@ admitted_truth_value($me, P, Value) :-
    truth_value(P, Value).
 admitted_truth_value(Listener, P, Value) :-
    pretend_truth_value(Listener, P , Value).
-   %% FINAL PROJECT CODE %%
-%% admitted_truth_value(Listener, P, true) :-
-%%    can_lie(P), lie(P, P).
-%% admitted_truth_value(Listener, P, false) :-
-%%    can_lie(P), !. %but you didn't find a lie that unified above
-   %% FINAL PROJECT CODE %%
-
 admitted_truth_value(Listener, P, Value) :-
    !,
    truth_value(P, Value),

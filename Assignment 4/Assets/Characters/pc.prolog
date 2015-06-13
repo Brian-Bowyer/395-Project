@@ -22,5 +22,4 @@ $global::fkey_command(alt-p, "Display player character's status") :-
    generate_character_debug_overlay($pc).
 
 lie(location($desk, _), location($desk, $kitchen)).
-lie(X,Y) :- $global::lie(X,Y).
-
+lie(Item,Loc) :- $global::lie(Item,Loc).
